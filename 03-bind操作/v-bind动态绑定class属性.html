@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+
+    .hide {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{message}}, 张三</h2>
+    <!-- v-bind 动态绑定 class属性 属性的值 class中可以传对象，当isActive为true才会显示 active-->
+    <a v-bind:class="{active : isActive, hide : isHide}" :href='url'>对象百度一下</a>
+    <!-- v-bind 中可以放入 methods -->
+    <a v-bind:class="changeClass()" :href='url'>传入方法百度一下</a>
+    <button @click="changeColor">改变颜色</button>
+    <!-- 语法糖的写法 -->
+    <a :href='url'>百度一下</a>
+
+  </div>
+  <!-- new  Vue  -->
+  <script>
+    var app1 = new Vue({
+      el: "#app",
+      data: {
+        message: "您好啊",
+        url: 'http://www.baidu.com',
+        active: 'jej',
+        hide: 'hide',
+        isActive: true,
+        isHide: false
+      },
+      methods: {
+        changeColor: function () {
+          this.isActive = !this.isActive
+        },
+        changeClass: function () {
+          return {
+            active: this.isActive,
+            hide: this.isHide
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

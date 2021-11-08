@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<!-- 注意点：必须要先声明子组件 再把子组件放入父组件中 ，否则会报错，显示未声明 -->
+<!-- 子组件只能在父组件中使用 -->
+<body>
+  <div id="app">
+    <my-cpn></my-cpn>
+  </div>
+  <!-- new  Vue  -->
+  <script>
+    // 创建组件构造器
+    const cpnChild = Vue.extend({
+      template: `
+          <div>
+              <h2>这是子组件化的标题</h2>
+              哈哈哈哈
+          </div>
+        `,
+      // 子组件在父组件中使用
+
+    })
+    // 创建子组件构造器
+    var cpnC2 = Vue.extend({
+      template: `
+          <div>
+              <h2>这是父组件化的标题2</h2>
+              嘿嘿嘿嘿
+              <childCpn></childCpn>
+          </div>
+        `,
+      components: {
+        childCpn: cpnChild
+      }
+    })
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter: 0
+      },
+      components: {
+        "my-cpn": cpnC2
+      }
+    })
+  </script>
+</body>
+
+</html>

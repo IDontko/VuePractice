@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <h2>{{counter}}</h2>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+      <button @click="eventParam">eventParam</button>
+      <!-- 这种情况 Vue会默认传递event对象 例如 PointerEvent 
+      -->
+      <button @click="eventParam2">eventParam2</button>
+      <!-- 但是这种情况没有参数会 打印 undefined -->
+      <button @click="eventParam2()">eventParam3</button>
+      <!-- 在方法定义时候 我们需要even对象，同时也需要其他参数。在
+      调用时， 获取到浏览器参数event对象： $event -->
+      <button @click="eventParam3('abc', $event)">eventParam4</button>
+    </div>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter:0
+      },
+      methods: {
+        increment() {
+          this.counter++
+        },
+        decrement() {
+          this.counter--
+        },
+        eventParam(){
+          console.log("no args test")
+        },
+        eventParam2(abc){
+          console.log(abc)
+        },
+        
+        eventParam3(abc, event){
+          console.log(abc + '------' + event)
+          console.log(event)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

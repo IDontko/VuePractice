@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+  </div>
+  
+  <!-- new  Vue  -->
+  <script>
+    //1，全局组件注册语法糖， 主要是省去了调用Vue.extend()的步骤，可以直接使用一个对象来代替
+    Vue.component('cpn1', {
+      template: `
+        <div>
+              <h2>这全局组件</h2>
+              嘿嘿嘿嘿
+          </div>
+        `
+    })
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter: 0
+      },
+    })
+  </script>
+</body>
+
+</html>

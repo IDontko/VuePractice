@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <h2>{{message}}</h2>
+      <!-- v-show只是 加了 display:none <h2 style="display: none;">我的message</h2> -->
+      <!-- v-if完全不会渲染元素 -->
+      <!-- 项目中如果切换次数多，那就用v-show，否则用v-if -->
+      <h2 v-show="isShow">{{message}}</h2>
+    </div>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isShow:false,
+        message:"我的message"
+      },
+ 
+    })
+  </script>
+</body>
+
+</html>

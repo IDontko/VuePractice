@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+      <!-- 父组件通过 slot-scope 来获取子组件的数据 -->
+      <div slot-scope="slotName">
+        <span v-for="item in slotName.data">{{item}} -</span>
+      </div>
+    </cpn>
+
+  </div>
+  <template id="cpn">
+    <div>
+      <!-- 通过子组件将数据传递给父组件 -在子组件定义属性，并且将数据传递给该属性 -->
+      <slot :data="fruits">
+        <li v-for="item in fruits">{{item}}</li>
+      </slot>
+    </div>
+  </template>
+  <!-- new  Vue  -->
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter: 0
+      },
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {
+            return {
+              fruits: ['苹果', '杨梅', '桃', '梨']
+            }
+          }
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 在Vue解析之前，div 中有一个属性 v-cloak -->
+  <!-- 在Vue解析之后，div 中有没有属性 v-cloak -->
+  <!--cloak  n. （尤指旧时的）披风，斗篷；遮盖物；伪装，幌子；（复数）衣帽间，行李寄存处，盥洗室；（承担的）主要角色 -->
+  <div id="app" v-cloak>
+   <h2>{{message}}, 张三</h2>
+  </div>
+  <!-- new  Vue  -->
+  <script>
+    setTimeout(function(){
+      var app1 = new Vue({
+      el: "#app",
+      data: {
+        message: "您好啊",
+        url : '<a href="http://www.baidu.com">百度一下</a>'
+      }
+    })
+    }, 1000)
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+        <lable for="agree">
+          <!-- checkbox单选框 -->
+          <input type="checkbox" id="agree" v-model="isAgree">同意协议</input>
+        </lable>
+        <h2>你选择的是 ：{{isAgree}}</h2>
+        
+          <input type="checkbox" value="篮球" v-model="hobbies">篮球
+          <input type="checkbox" value="足球" v-model="hobbies">足球
+          <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+          <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        <h2>您的爱好是： {{hobbies}}</h2>
+    </div>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isAgree:false,
+        hobbies:[]
+      },
+ 
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <ul->
+        <li v-for="item in names">{{item}}</li>
+      </ul->
+      <!-- 在遍历过程中加下标值 -->
+      <li v-for="(item, index) in names">{{index+1}}.{{item}}</li>
+      <!-- 遍历对象 获取value -->
+       <li v-for="item in info">{{item}}</li>
+       <!-- 遍历对象获取 key value -->
+       <li v-for="(value, key) in info">{{key}}值 {{value}}</li>
+        <!-- v-for遍历元素 加key属性。 作用就是为了高效的更新虚拟DOM diff算法更高效识别元素 -->
+       <li v-for="item in info" :key="item">{{item}}</li>
+    </div>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        names: ['why', 'kobe', 'james', 'curry'],
+        info : {
+          name: 'why',
+          age : 18,
+          height : 1.8
+        }
+      },
+ 
+    })
+  </script>
+</body>
+
+</html>

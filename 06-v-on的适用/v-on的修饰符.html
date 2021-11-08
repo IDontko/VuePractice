@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <div @click="divClick">
+        aaaaaaaa
+        <!-- 阻止事件冒泡 .stop -->
+        <button @click.stop = "btnClick">按钮</button>
+      </div>
+
+      <!-- 2. prevent修饰符的使用 -->
+      <form action="baidu">
+        <input type = "submit" value="提交" @click.prevent="submitClick">
+      </form>
+      <!-- 3. 键盘点击监听-->
+      <input type="text" @keyup="keyUp">
+      <!-- 当enter键位谈起的时候会触发 keyUp的方法 -->
+      <input type="text" @keyup.enter="keyUp">
+
+      <!-- 4.once修饰符只触发一次 -->
+      <button @click.once = "btnClick">按钮</button>
+    </div>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter:0
+      },
+      methods : {
+        btnClick(){
+          console.log("btnClick");
+        },
+        divClick(){
+          console.log("divClick")
+        },
+        submitClick(){
+          console.log("submitClick");
+        },
+        keyUp(){
+          console.log("keyUp");
+        }
+      }
+ 
+    })
+  </script>
+</body>
+
+</html>

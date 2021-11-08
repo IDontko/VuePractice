@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+   <h2>{{message}}, 张三</h2>
+   <!-- v-bind 动态绑定 href 属性的值-->
+   <a v-bind:href='url'>百度一下</a>
+   <!-- 语法糖的写法 -->
+   <a :href='url'>百度一下</a>
+  </div>
+  <!-- new  Vue  -->
+  <script>
+    var app1 = new Vue({
+      el: "#app",
+      data: {
+        message: "您好啊",
+        url : 'http://www.baidu.com'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <cpn :cmovies = "movies" :ccounter="counter"></cpn> 
+    </div>
+    <template id = 'cpn'>
+      <div>
+          <li v-for="item in cmovies">{{item}}</li>
+          <h2>{{ccounter}}</h2>
+      </div>
+    </template>
+    <!-- new  Vue  -->
+    <script>
+    const cpn = {
+      template: '#cpn',
+      // 传数组
+      // props: ['cmovies', 'ccounter']
+      props:{
+        //类型限制
+        cmovies: Array,
+        ccounter:{
+          type: Number,
+          //默认值
+          default: '1111',
+          //布尔值, 
+          required: true
+        }
+        
+      }
+    }
+    const app = new Vue({
+      el: "#app",
+      data: {
+        counter:1,
+        movies:['海王',  '海贼王', '海尔兄弟']
+      },
+      components:{
+        cpn
+      }
+    })
+  </script>
+</body>
+
+</html>

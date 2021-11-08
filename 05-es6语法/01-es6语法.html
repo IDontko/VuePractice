@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+      .active {
+          color: red;
+      }
+      .hide {
+        color: black;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+   <h2>{{message}}, 张三</h2>
+   <!-- v-bind 动态绑定 href 属性的值-->
+    <h2>{{totalPrice}}</h2>
+  </div>
+  <!-- new  Vue  -->
+  <script>
+   var app = new Vue({
+     el: '#app',
+     data : {
+      message: "hello",
+      totalPrice: '100'
+     }
+   })
+    
+  //  1.变量作用域, var 没有块级别的作用域 里外都可以访问
+  // javaScript 只有函数有作用域的概念，ES5之前因为if和 for都没有块级作用域的概念
+  {
+    var name = 'why';
+    console.log(name);
+  }
+  console.log(name);
+  // es6 加入了 let,函数和代码块都有自己的作用域
+  {
+    let name3 = 'abc'
+    console.log(name3)
+  }
+  // 会报错 Uncaught ReferenceError: name3 is not defined，报错是因为未声明 在该作用域未声明name3
+  // console.log(name3)
+
+  //1, const 关键字 在javaScript 标识符为常量，不可以再次赋值。2.const 定义标识符，必须进行赋值
+  const a =30;
+  // Uncaught TypeError: Assignment to constant variable.
+  // a= 20;
+  // 3 ，常量的含义是指向的对象不能修改，但是可以改变对象内部的属性
+  const obj = {
+    name: 'why',
+    age : 18,
+    height : 1.87
+  }
+  // 可以对于对象中的值重新赋值
+  // obj.name = 'zhangsan';
+  // obj.age = 20;
+  // obj.height = 1.22
+  //  1.属性的增强写法
+  const hehe = 'why';
+  const age = 19;
+  const height = 1.88;
+
+  const obj2 = {
+    hehe,
+    age,
+    height
+  }
+  console.log(obj2);
+  </script>
+</body>
+
+</html>

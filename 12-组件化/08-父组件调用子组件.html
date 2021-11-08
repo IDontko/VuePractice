@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id="app">
+      <cpn></cpn>
+      <cpn ref='mycpn'></cpn>
+      <button @click="clickComponent()">父组件打印子组件</button>
+    </div>
+    <template id="cpn">
+      <div>
+        这是子组件
+        <button @click="clickName()">子组件按钮</button>
+      </div>
+     
+    </template>
+    <!-- new  Vue  -->
+    <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        parentCounter:0
+      },
+      components : {
+        cpn : {
+          template : '#cpn',
+          methods: {
+            clickName(){
+              console.log('子组件的方法')
+              // 通过this.$parent获取父组件
+              console.log(this.$parent.parentCounter)
+
+              // 子组件调用父组件的方法,小心造成死循环， 子组件调用父组件的方法，父组件调用子组件的方法，来来往往无穷匮也
+              this.$parent.clickComponent()
+            }
+          },
+          data(){
+            return {
+              counter : 1
+            }
+          }
+        }
+      },
+      methods: {
+        clickComponent(){
+          // 打印子组件对象,数组对象
+          console.log(this.$children)
+          // 执行子组件的方法
+          this.$children[0].clickName()
+          // 打印子组件的变量
+          console.log(this.$children[0].counter)
+
+
+          // 打印子组件， 子组件必须使用ref属性来标识
+          console.log(this.$refs)
+          // 使用$refs.组件ref标识，获取组件
+          this.$refs.mycpn.clickName()
+          // 使用$refs.组件ref标识，获取子组件的数据
+          console.log(this.$refs.mycpn.counter)
+
+
+        }
+      },
+ 
+    })
+  </script>
+</body>
+
+</html>
