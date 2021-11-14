@@ -19,6 +19,7 @@
       <div>
           <li v-for="item in cmovies">{{item}}</li>
           <h2>{{ccounter}}</h2>
+          <button id="btnClick" @click="btnClick">按钮</button>
       </div>
     </template>
     <!-- new  Vue  -->
@@ -37,8 +38,12 @@
           //布尔值, 
           required: true
         }
-        
-      }
+      },
+      methods: {
+        btnClick(){
+          console.log("cpn function")
+        }  
+      },
     }
     const app = new Vue({
       el: "#app",
