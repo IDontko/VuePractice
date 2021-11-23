@@ -26,3 +26,4 @@ const app = new Vue({
         App
     }
 })
+document.writeln('<h2>我的测试123</h2>')

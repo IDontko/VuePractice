@@ -6,9 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: './src/main.js',
   output: {
+    // path:所有输出文件的目标路径;打包后文件在硬盘中的存储位置。必须是绝对路径
+// publicPath:输出解析文件的目录，指定资源文件引用的目录 ，打包后浏览器访问服务时的 url 路径中通用的一部分。
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '../dist/',
+    // publicPath: '../dist/',
   },
   resolve: {
     alias: {
@@ -58,8 +60,13 @@ module.exports = {
     new webpack.BannerPlugin('最终版权归gy所有'),
     new HtmlWebpackPlugin({
       template:'./src/index.html'
-    })
-  ]
+    }),
+  ],
+  devServer: {
+    contentBase: './dist',//服务的文件夹
+    port: 4000,
+    inline: true//是否实时刷新
+  }
   
 
 }
