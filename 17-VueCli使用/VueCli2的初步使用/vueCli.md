@@ -6,3 +6,5 @@
     
 **vue cli2初始化项目**
     vue init webpack my-project
+
+**vue runtimeonly 和 vue compiler区别** 
