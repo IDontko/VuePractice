@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.定义函数的方式 function
+        const aaa = function() {
+
+        }
+        // 2,对象字面量中定义函数
+        const obj = {
+            bbb(){
+
+            }
+        }
+        // 3, ES6中的箭头函数
+        // const ccc = (参数列表) => {
+
+        // }
+        // 基本的箭头函数
+        const ccc = () =>{
+            console.log("基本箭头函数")
+        }
+
+        // 箭头函数的参数
+        const sum = (num1, num2) => {
+            return num1 + num2
+        }
+        // 一个参数
+        const power = (num) => {
+            return num * num
+        }
+        // 一个参数的时候小括号可以省略
+        const powerOne = num=>{
+            return num * num
+        }
+        // 2,函数中有多行代码时候
+        const test = () => {
+            console.log('hello world')
+            console.log('hello vue')
+        }
+        // 当函数中只有一行代码的时候,可以简略 中括号
+        const mul = (num1, num2) => num1 * num2
+        console.log(mul(2, 10))
+        
+        // 箭头函数中的this引用的就是最近作用域中的this
+        const thisObj = {
+            
+            aaa(){
+                // {aaa: ƒ}
+                setTimeout(() => console.log(this))
+            },
+
+            // Window
+            bbb(){
+                setTimeout(function() {
+                    console.log(this)
+                })
+            }
+
+            
+        }
+
+        thisObj.aaa()
+        thisObj.bbb()
+    </script>
+    
+</body>
+</html>
